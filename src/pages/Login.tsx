@@ -13,12 +13,12 @@ const Login: React.FC = () => {
   });
 
   const handleSubmit = (values: any) => {
-    localStorage.setItem('token', 'logged_in'); // Simplified auth flow
+    localStorage.setItem('token', 'logged_in'); 
     navigate('/dashboard');
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-screen items-center justify-center bg-gray-50 pt-4 md:pt-8 mb-5">
+    <div className="flex flex-col md:flex-row min-h-screen items-center justify-center bg-gray-50 pt-4 md:pt-8 mb-5">
       {/* Left Section: Image with additional text */}
       <div className="md:w-1/2 w-full px-6 md:px-8 flex flex-col items-center justify-center text-center md:pt-0 pt-8">
         {/* Text above the image */}

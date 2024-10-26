@@ -18,7 +18,7 @@ const Register: React.FC = () => {
   });
 
   const handleSubmit = (values: any) => {
-    localStorage.setItem("token", "logged_in"); // Simplified auth flow
+    localStorage.setItem("token", "logged_in"); 
     navigate("/dashboard");
   };
 

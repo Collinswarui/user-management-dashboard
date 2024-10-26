@@ -8,19 +8,17 @@ const Header: React.FC = () => {
   // Check if the user is authenticated
   const isAuthenticated = !!localStorage.getItem("token");
 
-  // Handle logout (clears token and redirects to login)
   const handleLogout = () => {
-    localStorage.removeItem("token"); // Remove token to log the user out
-    navigate("/login"); // Redirect to login page
+    localStorage.removeItem("token"); 
+    navigate("/login"); 
   };
-
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   return (
-    <header className="bg-teal-500 shadow-lg">
+    <header className="bg-teal-600 shadow-lg">
       <div className="container mx-auto flex justify-between items-center p-4">
         {/* Left Section: Logo */}
         <div className="text-white font-bold text-lg">
@@ -43,16 +41,7 @@ const Header: React.FC = () => {
         <nav className="hidden md:flex space-x-6 text-white">
           {isAuthenticated && (
             <>
-              <Link to="/dashboard" className="hover:underline">
-                Dashboard
-              </Link>
-              <Link to="/users" className="hover:underline">
-                Users
-              </Link>
-              <Link to="/analytics" className="hover:underline">
-                Analytics
-              </Link>
-              <button onClick={handleLogout} className="hover:underline">
+              <button onClick={handleLogout} className="hover:underline font-semibold">
                 Logout
               </button>
             </>
@@ -83,6 +72,9 @@ const Header: React.FC = () => {
               </Link>
               <Link to="/analytics" className="block hover:underline">
                 Analytics
+              </Link>
+              <Link to="/settings" className="block hover:underline">
+                Settings
               </Link>
               <button onClick={handleLogout} className="block hover:underline">
                 Logout
