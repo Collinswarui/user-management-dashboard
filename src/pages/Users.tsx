@@ -17,7 +17,7 @@ const Users: React.FC = () => {
   if (error) return <p>Error loading users</p>;
 
   return (
-    <div className="p-6">
+    <div className="min-h-screen p-6">
       <h1 className="text-3xl font-bold mb-4 text-center text-teal-500">Users</h1>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow">
@@ -29,6 +29,8 @@ const Users: React.FC = () => {
               <th className="py-2 px-4 border-b">Status</th>
               <th className="py-2 px-4 border-b">Role</th>
               <th className="py-2 px-4 border-b">Created At</th>
+              <th className="py-2 px-4 border-b">User Edit</th>
+              <th className="py-2 px-4 border-b">User Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -50,6 +52,8 @@ const Users: React.FC = () => {
                 </td>
                 <td className="py-2 px-4 border-b">{user.role}</td>
                 <td className="py-2 px-4 border-b">{user.createdAt}</td>
+                <td><button type='button' className="py-2 px-4 border-b text-green-500">Edit</button></td>
+                <button type='button' className="py-2 px-4 border-b text-red-500">Delete</button>
               </tr>
             ))}
           </tbody>

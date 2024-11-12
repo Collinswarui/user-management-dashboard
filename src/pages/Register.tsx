@@ -23,11 +23,9 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen"> {/* Flex container to handle layout */}
-      {/* Main content area with padding to prevent overlap with header */}
-      <main className="flex-grow flex items-center justify-center bg-gray-50 pt-16 pb-20"> {/* Added pt-16 for top padding and pb-20 for bottom padding */}
+    <div className="flex flex-col min-h-screen">
+      <main className="flex-grow flex items-center justify-center bg-gray-50 pt-16 pb-20"> 
         <div className="flex flex-col md:flex-row w-full max-w-screen-lg items-center justify-center">
-          {/* Left Section: Image with additional text */}
           <div className="md:w-1/2 w-full px-6 md:px-8 flex flex-col items-center justify-center text-center">
             <h2 className="text-xl md:text-2xl font-semibold text-gray-700 mb-2 md:mb-4">
               Welcome to Our Secure Portal

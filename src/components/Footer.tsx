@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
         </p>
         <div className="mt-4">
           <a href="https://github.com/your-repo" className="text-gray-400 hover:text-white mx-2">GitHub</a>
-          <a href="/docs" className="text-gray-400 hover:text-white mx-2">Documentation</a>
+          <a href="#" className="text-gray-400 hover:text-white mx-2">Documentation</a>
         </div>
       </div>
     </footer>

@@ -19,9 +19,7 @@ const Login: React.FC = () => {
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen items-center justify-center bg-gray-50 pt-4 md:pt-8 mb-5">
-      {/* Left Section: Image with additional text */}
       <div className="md:w-1/2 w-full px-6 md:px-8 flex flex-col items-center justify-center text-center md:pt-0 pt-8">
-        {/* Text above the image */}
         <h2 className="text-xl md:text-2xl font-semibold text-gray-700 mb-2 md:mb-4">
           Welcome to Our Secure Portal
         </h2>

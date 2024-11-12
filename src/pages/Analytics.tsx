@@ -1,6 +1,9 @@
 // src/pages/Analytics.tsx
 import React from 'react';
-import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, Tooltip, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer } from 'recharts';
+import {
+  LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, Tooltip, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer
+} from 'recharts';
+import { useQuery } from '@tanstack/react-query';
 import {
   mockUserActivity,
   mockGrowthMetrics,
@@ -12,6 +15,36 @@ import {
 const Analytics: React.FC = () => {
   const COLORS = ['#8884d8', '#82ca9d', '#ffc658'];
 
+  // Fetch User Activity Data
+  const { data: userActivity } = useQuery({
+    queryKey: ['userActivity'],
+    queryFn: () => mockUserActivity,
+  });
+
+  // Fetch Growth Metrics Data
+  const { data: growthMetrics } = useQuery({
+    queryKey: ['growthMetrics'],
+    queryFn: () => mockGrowthMetrics,
+  });
+
+  // Fetch Demographics Data
+  const { data: demographics } = useQuery({
+    queryKey: ['demographics'],
+    queryFn: () => mockDemographics,
+  });
+
+  // Fetch Usage Behavior Data
+  const { data: usageBehavior } = useQuery({
+    queryKey: ['usageBehavior'],
+    queryFn: () => mockUsageBehavior,
+  });
+
+  // Fetch System Performance Data
+  const { data: systemPerformance } = useQuery({
+    queryKey: ['systemPerformance'],
+    queryFn: () => mockSystemPerformance,
+  });
+
   return (
     <div className="p-8 bg-gray-50 min-h-screen">
       <h1 className="text-3xl text-center font-bold text-teal-500 mb-6">Analytics Overview</h1>
@@ -22,7 +55,7 @@ const Analytics: React.FC = () => {
         <section className="p-6 bg-white shadow-md rounded-lg border border-gray-200">
           <h2 className="text-xl font-semibold text-gray-700 mb-4">User Activity Analysis</h2>
           <ResponsiveContainer width="100%" height={200}>
-            <LineChart data={mockUserActivity.dailyActiveUsers.map((value, index) => ({ day: index + 1, users: value }))}>
+            <LineChart data={userActivity?.dailyActiveUsers.map((value: number, index: number) => ({ day: index + 1, users: value }))}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="day" label={{ value: "Day", position: "insideBottomRight", offset: -10 }} />
               <YAxis />
@@ -36,7 +69,7 @@ const Analytics: React.FC = () => {
         <section className="p-6 bg-white shadow-md rounded-lg border border-gray-200">
           <h2 className="text-xl font-semibold text-gray-700 mb-4">Growth Metrics</h2>
           <ResponsiveContainer width="100%" height={200}>
-            <BarChart data={mockGrowthMetrics.userGrowth.map((value, index) => ({ month: index + 1, growth: value }))}>
+            <BarChart data={growthMetrics?.userGrowth.map((value: number, index: number) => ({ month: index + 1, growth: value }))}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="month" label={{ value: "Month", position: "insideBottomRight", offset: -10 }} />
               <YAxis />
@@ -51,8 +84,8 @@ const Analytics: React.FC = () => {
           <h2 className="text-xl font-semibold text-gray-700 mb-4">Sign-Up Sources</h2>
           <ResponsiveContainer width="100%" height={200}>
             <PieChart>
-              <Pie data={mockGrowthMetrics.signUpSources} dataKey="count" nameKey="source" cx="50%" cy="50%" outerRadius={80} label>
-                {mockGrowthMetrics.signUpSources.map((_, index) => (
+              <Pie data={growthMetrics?.signUpSources} dataKey="count" nameKey="source" cx="50%" cy="50%" outerRadius={80} label>
+                {growthMetrics?.signUpSources.map((_, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
@@ -67,8 +100,8 @@ const Analytics: React.FC = () => {
           <h2 className="text-xl font-semibold text-gray-700 mb-4">Geographic Distribution</h2>
           <ResponsiveContainer width="100%" height={200}>
             <PieChart>
-              <Pie data={mockDemographics.geographicDistribution} dataKey="users" nameKey="country" cx="50%" cy="50%" outerRadius={80} label>
-                {mockDemographics.geographicDistribution.map((_, index) => (
+              <Pie data={demographics?.geographicDistribution} dataKey="users" nameKey="country" cx="50%" cy="50%" outerRadius={80} label>
+                {demographics?.geographicDistribution.map((_, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
@@ -82,7 +115,7 @@ const Analytics: React.FC = () => {
         <section className="p-6 bg-white shadow-md rounded-lg border border-gray-200">
           <h2 className="text-xl font-semibold text-gray-700 mb-4">Feature Usage</h2>
           <ResponsiveContainer width="100%" height={200}>
-            <BarChart data={mockUsageBehavior.featureUsage}>
+            <BarChart data={usageBehavior?.featureUsage}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="feature" />
               <YAxis />
@@ -96,7 +129,7 @@ const Analytics: React.FC = () => {
         <section className="p-6 bg-white shadow-md rounded-lg border border-gray-200">
           <h2 className="text-xl font-semibold text-gray-700 mb-4">System Performance</h2>
           <ResponsiveContainer width="100%" height={200}>
-            <LineChart data={mockSystemPerformance.errorRates.map((value, index) => ({ day: index + 1, errors: value }))}>
+            <LineChart data={systemPerformance?.errorRates.map((value: number, index: number) => ({ day: index + 1, errors: value }))}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="day" label={{ value: "Day", position: "insideBottomRight", offset: -10 }} />
               <YAxis />
