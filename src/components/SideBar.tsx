@@ -77,19 +77,19 @@ const Sidebar: React.FC = () => {
           {/* Dropdown Menu for Settings */}
           {isSettingsOpen && !isCollapsed && (
             <ul className="mt-2 ml-14 text-sm space-y-2 text-teal-400">
-              <li>
+              {/* <li>
                 <Link to="/settings/profile" className="flex items-center hover:text-teal-500">
                   <PersonIcon className="mr-2" />
                   Profile
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/settings/account" className="flex items-center hover:text-teal-500">
                   <AccountCircleIcon className="mr-2" />
                   Account
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/settings/notifications" className="flex items-center hover:text-teal-500">
                   <NotificationsIcon className="mr-2" />
                   Notifications
@@ -100,7 +100,7 @@ const Sidebar: React.FC = () => {
                   <PaletteIcon className="mr-2" />
                   Appearance
                 </Link>
-              </li>
+              </li> */}
             </ul>
           )}
         </li>
